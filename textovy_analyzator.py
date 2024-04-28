@@ -97,5 +97,3 @@ for key in sorted(hodnoty_grafu.keys()):
     print("{:>6} |".format(key), "{:<17}".format("*" * hodnoty_grafu[key]), "| {:<6}".format(hodnoty_grafu[key]))
 
 print("-" * 50)
-
-print(hodnoty_grafu)
