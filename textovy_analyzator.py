@@ -37,17 +37,17 @@ if not cislo_textu.isdigit() or int(cislo_textu) < 1 or int(cislo_textu) > 3:
     exit()
 else:
     cislo_textu = int(cislo_textu)
-  
 
-print(TEXTS[cislo_textu - 1])
 # Příprava proměnných
+
 pocet_slov = 0
 zacina_velkym = 0
 vse_velkym = 0
 vse_malym = 0
 pocet_cisel = 0
 suma_cisel = 0
-
+delka_slov = {}
+    
 #ITERACE NAD VYBRANÝM TEXTEM
 for slovo in TEXTS[cislo_textu - 1].split():
     # POČET SLOV
@@ -80,6 +80,22 @@ print(f"Počet čísel v textu: {pocet_cisel}")
 print(f"Součet čísel v textu: {suma_cisel}")
 print("-" * 50)
 
-
-
 # GRAF
+# připravit si proměnnou
+hodnoty_grafu = {}
+# iterovat přes text ke změření slov
+
+for delka_slova in TEXTS[cislo_textu - 1].split():
+    delka_slova = delka_slova.rstrip(".,!?:;")
+    hodnoty_grafu[len(delka_slova)] = hodnoty_grafu.get(len(delka_slova), 0) + 1
+# vykreslit graf pomocí formátovacích znaků
+
+print("{:>6} |".format("DÉLKA"), "{:^17}".format("VÝSKYTY"), "| {:<6}".format("POČET"))
+print("-" * 50)
+
+for key in sorted(hodnoty_grafu.keys()):
+    print("{:>6} |".format(key), "{:<17}".format("*" * hodnoty_grafu[key]), "| {:<6}".format(hodnoty_grafu[key]))
+
+print("-" * 50)
+
+print(hodnoty_grafu)
