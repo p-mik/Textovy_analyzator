@@ -82,15 +82,19 @@ print("-" * 50)
 
 # GRAF
 # připravit si proměnnou
+
 hodnoty_grafu = {}
-# iterovat přes text ke změření slov
+
+# iterovat přes text ke změření slov a uložení do slovníku
 
 for delka_slova in TEXTS[cislo_textu - 1].split():
-    delka_slova = delka_slova.rstrip(".,!?:;")
+    delka_slova = delka_slova.rstrip(".,!?:;") # odebrání diakritiky na konci vět
     hodnoty_grafu[len(delka_slova)] = hodnoty_grafu.get(len(delka_slova), 0) + 1
+
 # vykreslit graf pomocí formátovacích znaků
 
 print("{:>6} |".format("DÉLKA"), "{:^17}".format("VÝSKYTY"), "| {:<6}".format("POČET"))
+
 print("-" * 50)
 
 for key in sorted(hodnoty_grafu.keys()):
